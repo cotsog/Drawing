@@ -16,6 +16,7 @@
   "author": "Ben Wilcox",
   "license": "MIT",
   "dependencies": {
+    "atrament": "^0.1.0",
     "body-parser": "^1.15.0",
     "browserify": "^13.0.0",
     "compression": "^1.6.1",

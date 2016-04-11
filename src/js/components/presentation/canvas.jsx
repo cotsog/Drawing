@@ -143,11 +143,13 @@
 
 // export default DrawingCanvas;
 
+var DrawingCanvas;
 var React = require('react');
 var ReactDOM = require('react-dom');
+require("atrament");
 
 
-var DrawingCanvas = React.createClass({
+DrawingCanvas = React.createClass({
 
 
     /**
@@ -181,60 +183,62 @@ var DrawingCanvas = React.createClass({
     componentDidMount: function () {
         var canvas = ReactDOM.findDOMNode(this.refs.canvas);
         var ctx = canvas.getContext('2d');
+        
+        var atrCanvas = atrament(canvas);
 
         // apply any initial canvas scale factors
         // var scale = this._getCanvasScaleFactor(canvas);
 
         /* eslint react/no-did-mount-set-state: 0 */
         this.setState({
-            canvas: canvas,
+            canvas: atrCanvas,
             ctx: ctx,
         });
 
 
-        canvas.addEventListener('mouseup', this.onMouseUp);
-        canvas.addEventListener('mousedown', this.onMouseDown);
-        canvas.addEventListener('mousemove', this.onMouseMove);
+        // canvas.addEventListener('mouseup', this.onMouseUp);
+        // canvas.addEventListener('mousedown', this.onMouseDown);
+        // canvas.addEventListener('mousemove', this.onMouseMove);
         window.addEventListener('resize', this.onResize);
     },
 
 
-    /**
-     * Handle a MouseUp event
-     */
-    onMouseUp: function (e) {
-        var mousePos = this._getMouseOnCanvas(e);
-        this.setState({
-            dragging: false,
-        });
-        this.state.ctx.lineTo(mousePos.x, mousePos.y);
-        this.state.ctx.stroke();
-    },
+    // /**
+    //  * Handle a MouseUp event
+    //  */
+    // onMouseUp: function (e) {
+    //     var mousePos = this._getMouseOnCanvas(e);
+    //     this.setState({
+    //         dragging: false,
+    //     });
+    //     this.state.ctx.lineTo(mousePos.x, mousePos.y);
+    //     this.state.ctx.stroke();
+    // },
 
 
-    /**
-     * Handle a MouseDown event
-     */
-    onMouseDown: function (e) {
-        var mousePos = this._getMouseOnCanvas(e);
-        this.setState({
-            dragging: true,
-        });
-        this.state.ctx.beginPath();
-        this.state.ctx.moveTo(mousePos.x, mousePos.y);
-    },
+    // /**
+    //  * Handle a MouseDown event
+    //  */
+    // onMouseDown: function (e) {
+    //     var mousePos = this._getMouseOnCanvas(e);
+    //     this.setState({
+    //         dragging: true,
+    //     });
+    //     this.state.ctx.beginPath();
+    //     this.state.ctx.moveTo(mousePos.x, mousePos.y);
+    // },
 
 
-    /**
-     * Handle a MouseMove event
-     */
-    onMouseMove: function (e) {
-        var mousePos = this._getMouseOnCanvas(e);
-        if (this.state.dragging) {
-            this.state.ctx.stroke();
-            this.state.ctx.lineTo(mousePos.x, mousePos.y);
-        }
-    },
+    // /**
+    //  * Handle a MouseMove event
+    //  */
+    // onMouseMove: function (e) {
+    //     var mousePos = this._getMouseOnCanvas(e);
+    //     if (this.state.dragging) {
+    //         this.state.ctx.stroke();
+    //         this.state.ctx.lineTo(mousePos.x, mousePos.y);
+    //     }
+    // },
 
 
     /**
