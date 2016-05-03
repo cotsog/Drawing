@@ -34,7 +34,7 @@ before_install:
   - npm -v
   - npm install npm -g
   - sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
-  - npm install babel-preset-es2015-node@${TRAVIS_NODE_VERSION:0:1}
+  - npm install babel-preset-es2015
   - npm install babel-preset-react 
   - npm install babel-register
   - npm install react-addons-test-utils@0.14.7
